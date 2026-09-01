@@ -2,12 +2,11 @@
 /**
  * Elaina Bot v4.0 — Connection Handler
  * 
- * PAIRING CODE FLOW:
- * 1. Bot generates 8-digit code (automatic from Baileys)
- * 2. Code displayed in terminal/console
- * 3. User enters code in WhatsApp:
- *    WhatsApp → Settings → Linked Devices → Link with Phone Number
- * 4. Device linked!
+ * Features:
+ * - QR Code & Pairing Code support
+ * - Anti-Ban system (human-like behavior)
+ * - Auto-reconnect with backoff
+ * - Session persistence
  */
 
 const {
@@ -24,6 +23,7 @@ const readline = require('readline');
 const fs = require('fs');
 const path = require('path');
 const config = require('../config/settings');
+const { wrapSocketWithAntiBan } = require('../security/antiBan');
 
 const SESSION_DIR = config.authDir || './session/auth';
 if (!fs.existsSync(SESSION_DIR)) fs.mkdirSync(SESSION_DIR, { recursive: true });
@@ -67,7 +67,7 @@ async function createConnection(options = {}) {
     console.log(`[CONN] Baileys version: ${version.join('.')} (latest: ${isLatest})`);
 
     // Create socket (don't render QR yet)
-    sock = makeWASocket({
+    let rawSocket = makeWASocket({
         version,
         auth: {
             creds: state.creds,
@@ -78,6 +78,12 @@ async function createConnection(options = {}) {
         browser: ['Elaina Bot v4.0', 'Safari', '3.0'],
         markOnlineOnConnect: true,
     });
+
+    // Wrap with anti-ban system
+    const antiban = wrapSocketWithAntiBan(rawSocket, {
+        maxPerMinute: config.rateLimitMax || 10,
+    });
+    sock = antiban.sock;
 
     // Connection handler
     sock.ev.on('connection.update', async (update) => {
@@ -157,12 +163,13 @@ async function createConnection(options = {}) {
             reconnectAttempts = 0;
             const botNumber = sock.user?.id?.split(':')[0] || 'unknown';
             
-            console.log('\n╔══════════════════════════════════════╗');
-            console.log('║   ✅ ELAINA BOT — CONNECTED!         ║');
-            console.log(`║   📱 Bot: ${botNumber}`);
-            console.log(`║   👑 Owner: ${config.ownerName}`);
-            console.log(`║   🕐 ${new Date().toLocaleString('id-ID')}`);
-            console.log('╚══════════════════════════════════════╝\n');
+        console.log('\n╔══════════════════════════════════════╗');
+        console.log('║   ✅ ELAINA BOT — CONNECTED!         ║');
+        console.log(`║   📱 Bot: ${botNumber}`);
+        console.log(`║   👑 Owner: ${config.ownerName}`);
+        console.log(`║   🛡️ Anti-Ban: ACTIVE`);
+        console.log(`║   🕐 ${new Date().toLocaleString('id-ID')}`);
+        console.log('╚══════════════════════════════════════╝\n');
         }
     });
 

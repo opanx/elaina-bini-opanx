@@ -1,7 +1,7 @@
 # 🌙 Elaina Bot — The Primary
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-4.0.0-purple?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/version-4.1.0-purple?style=for-the-badge" />
   <img src="https://img.shields.io/badge/node-%3E%3D20-green?style=for-the-badge" />
   <img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge" />
   <img src="https://img.shields.io/badge/baileys-latest-orange?style=for-the-badge" />
@@ -22,6 +22,8 @@ A feature-rich WhatsApp bot built with Node.js and Baileys, featuring AI chat, m
 | **Rebuilt by** | Opanx 🐙 |
 
 > This software is provided as-is. The original developer and base creator must be credited at all times.
+> 
+> **Anti-Ban**: Elaina uses `baileys-antiban` for human-like behavior patterns to reduce ban risk. Never spam or send bulk messages.
 
 ---
 
@@ -85,6 +87,16 @@ A feature-rich WhatsApp bot built with Node.js and Baileys, featuring AI chat, m
 - Rate limiting
 - Ban system
 - Auto-Doctor (self-healing)
+
+### 🛡️ Anti-Ban System
+- **Gaussian jitter rate limiting** — Human-like message timing
+- **7-day warm-up** — Gradual ramp for new numbers
+- **Typing simulation** — Realistic typing indicators
+- **Presence cycling** — Available/unavailable toggling
+- **Content variation** — Invisible character injection
+- **Delivery tracking** — Monitor message delivery rates
+- **Health monitoring** — Auto-pause on ban risk
+- **Human entropy service** — Background idle activity
 
 ### 🔧 Tools
 - OCR (image to text)
@@ -292,7 +304,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **FallZx Infinity** — Original Developer
 - **KyyInfinite** — Base ORI
 - **Opanx** — Rebuild & Optimization
+- **Panxcz** — Owner 👑
 - **@whiskeysockets/baileys** — WhatsApp Web API
+- **baileys-antiban** — Anti-ban middleware
 - **Contributors** — Thank you!
 
 ---
@@ -300,6 +314,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## ⚠️ Disclaimer
 
 This bot is provided for educational purposes only. Use at your own risk. The developers are not responsible for any misuse or damage caused by this bot.
+
+**Anti-Ban Notice**: While Elaina includes anti-ban protections, there is no 100% guarantee against WhatsApp bans. Use responsibly and avoid spamming.
 
 ---
 
