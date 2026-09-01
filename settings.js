@@ -47,10 +47,10 @@ Semoga bermanfaat dan selamat berkarya!
 require("./Elaina")
 const fs = require('fs')
 
-global.owner = "6285813708397", "6285813708397" //NOMOR OWNER
-global.nobot = "6285119732048" //NOMOR BOT
-global.nomorowner = '6285813708397' //NOMOR OWNER
-global.namaowner = "FallZx Infinity" //NAMA OWNER LO
+global.owner = "6285706665203" //NOMOR OWNER
+global.nobot = "6282147837988" //NOMOR BOT
+global.nomorowner = '6285706665203' //NOMOR OWNER
+global.namaowner = "Panxcz Infinity" //NAMA OWNER LO
 global.namaBot = "𝑬𝒍𝒂𝒊𝒏𝒆 𝑻𝒉𝒆 𝑷𝒓𝒊𝒎𝒂𝒓𝒚" //NAMA BOT LO
 global.thumnail2 = "https://files.catbox.moe/i58vrz.jpg" //REPLY IMAG
 global.replyimg = "https://files.catbox.moe/2hhala.jpg" //REPLY IMAGE
