@@ -7,34 +7,60 @@
  * ║   Base ORI    : KyyInfinite               ║
  * ║   Rebuilt by  : Opanx 🐙                 ║
  * ║   Version     : 4.0.0                     ║
+ * ║   License     : MIT (4-Layer Protected)   ║
  * ╚═══════════════════════════════════════════╝
  *
- * Credits must remain intact.
- * Do not remove developer attribution.
+ * ⚠️ Credits must remain intact.
+ * ⚠️ Do not remove developer attribution.
+ * 🔐 This code is protected by 4-layer encryption.
  */
 
 // Load environment
 require('dotenv').config();
 
 const config = require('./config/settings');
+const { validateLicense, checkIntegrity, getLicenseInfo, CREDITS } = require('./lib/license');
 const { createConnection } = require('./core/connection');
 const { initEvents } = require('./core/eventHandler');
 const { loadCommands, executeCommand } = require('./core/commandLoader');
-const db = require('./database/engine');
+
+// ============ LICENSE CHECK ============
+console.log('\n🔐 Checking license...');
+const licenseStatus = validateLicense();
+const integrityStatus = checkIntegrity();
+
+if (!licenseStatus.valid) {
+    console.error('❌ License invalid!');
+    console.error('❌ This copy may be tampered with.');
+    console.error('❌ Please download from official source.');
+    process.exit(1);
+}
+
+if (!integrityStatus.valid) {
+    console.error('⚠️  Integrity check failed:');
+    integrityStatus.issues.forEach(issue => console.error('   -', issue));
+    console.error('❌ Credits may have been removed.');
+    console.error('❌ Please restore credits to continue.');
+    process.exit(1);
+}
+
+console.log('✅ License valid');
+console.log('✅ Integrity check passed');
 
 // ============ BANNER ============
 console.log(`
 ╔═══════════════════════════════════════════╗
 ║                                           ║
-║   🌙  ELAINA — THE PRIMARY  🌙           ║
+║   🌙  𝑬𝒍𝒂𝒊𝒏𝒂 — 𝑻𝒉𝒆 𝑷𝒓𝒊𝒎𝒂𝒓𝒚  🌙       ║
 ║   ═══════════════════════════════         ║
+║                                           ║
+║   🌸 "Your AI-Powered Butler" 🌸         ║
 ║                                           ║
 ║   Developer   : FallZx Infinity           ║
 ║   Base ORI    : KyyInfinite               ║
 ║   Rebuilt by  : Opanx 🐙                 ║
 ║   Version     : 4.0.0                     ║
-║                                           ║
-║   "Your AI-Powered WhatsApp Butler"       ║
+║   License     : MIT                       ║
 ║                                           ║
 ╚═══════════════════════════════════════════╝
 `);
@@ -71,6 +97,7 @@ async function main() {
         console.log(`[BOT] 📱 Pairing code mode: ${pairingCode ? 'YES' : 'NO (QR code)'}`);
         console.log(`[BOT] 🔧 Prefix: ${config.prefix}`);
         console.log(`[BOT] 👑 Owner: ${config.ownerName}`);
+        console.log(`[BOT] 🔐 License: ${CREDITS.license} (4-Layer Protected)`);
         console.log('');
 
     } catch (e) {
