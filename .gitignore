@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment
+.env
+.env.local
+.env.production
+
+# Session (sensitive - never commit!)
+session/
+auth_info/
+auth/
+
+# Database runtime
+database/*.db
+database/*.db-shm
+database/*.db-wal
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temp
+tmp/
+temp/
+*.tmp

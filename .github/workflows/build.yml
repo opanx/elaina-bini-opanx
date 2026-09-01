@@ -1,0 +1,49 @@
+name: Elaina Bot CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [20.x, 22.x]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify project structure
+        run: |
+          echo "✅ Checking project structure..."
+          test -f src/index.js || exit 1
+          test -f src/core/connection.js || exit 1
+          test -f src/core/commandLoader.js || exit 1
+          test -f src/database/engine.js || exit 1
+          test -f src/config/settings.js || exit 1
+          echo "✅ All core files present!"
+
+      - name: Check syntax
+        run: node --check src/index.js
+        run: node --check src/config/settings.js
+        run: node --check src/database/engine.js
+        run: node --check src/core/connection.js
+        run: node --check src/core/commandLoader.js
+
+      - name: Build success
+        run: echo "✅ Build successful! Bot is ready to deploy."
