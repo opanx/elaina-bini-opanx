@@ -33,7 +33,6 @@ jobs:
             libpango1.0-dev \
             libgif-dev \
             librsvg2-dev \
-            pixman \
             libpixman-1-dev \
             pkg-config \
             build-essential \
