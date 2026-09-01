@@ -87,16 +87,12 @@
         "nsfwjs": "^3.0.0",
         "uuid": "^10.0.0",
         "@tensorflow/tfjs-node": "^4.22.0",
-        "async.parallel_limit": "^1.2.0",
         "cookie": "^0.6.0",
-        "dasu": "^1.0.0",
-        "human-time": "^1.1.0",
         "jsonpath-plus": "^10.0.0",
         "nodemailer": "^6.9.0",
-        "qc-generator-whatsapp": "^1.0.0",
         "skia-canvas": "^2.0.2",
         "tough-cookie": "^4.1.0",
-        "zencf": "^1.0.0"
+        "async": "^3.2.5"
     },
     "optionalDependencies": {},
     "engines": {
