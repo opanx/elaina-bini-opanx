@@ -2,7 +2,7 @@
 
 > **Your AI-Powered WhatsApp Butler** | Rebuilt by Opanx 🐙
 
-## ⚡ Quick Install
+## ⚡ Install (Pterodactyl / VPS / Local)
 
 ```bash
 # 1. Clone
@@ -12,32 +12,31 @@ cd elaina-bini-opanx
 # 2. Install
 npm install
 
-# 3. Setup
-cp .env.example .env
-nano .env
+# 3. Edit settings.js (buka di file manager, edit langsung!)
+#    Ganti nomor owner, nama bot, API keys, dll.
 
 # 4. Run
 npm start
 ```
 
-**Done!** Bot langsung jalan! 🎉
+**Done!** Ga perlu `cp .env`, langsung edit `settings.js`!
 
-## 📲 Pairing Code (No QR)
+## 📝 Edit settings.js
+
+Buka `settings.js` di file manager, edit bagian ini:
+
+```js
+global.owner = "6285706665203"        // Nomor lu
+global.namaowner = "Panxcz"           // Nama lu
+global.namaBot = "Elaina The Primary" // Nama bot
+global.keyopenai = "sk-xxx"           // OpenAI key (opsional)
+global.groqKey = "gsk_xxx"            // Groq key (FREE!)
+```
+
+## 📲 Pairing Code
 
 ```bash
 node index.js --pairing
-```
-
-## ⚙️ Config (.env)
-
-```env
-BOT_NAME=Elaina The Primary
-OWNER_NUMBER=6285706665203
-OWNER_NAME=Panxcz
-PREFIX=.
-PAIRING_CODE=PANXCELM
-OPENAI_API_KEY=sk-xxxxx
-GROQ_API_KEY=gsk_xxxxx
 ```
 
 ## 📊 Features
@@ -55,7 +54,7 @@ GROQ_API_KEY=gsk_xxxxx
 ```
 ├── Elaina.js          ← Main handler (32K lines)
 ├── index.js           ← Entry point
-├── settings.js        ← Config + globals
+├── settings.js        ← EDIT INI! (config + globals)
 ├── lib/               ← Libraries
 │   ├── allmenu.js     ← Menu system
 │   ├── games.js       ← 15+ games
