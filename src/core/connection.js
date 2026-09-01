@@ -1,7 +1,13 @@
 'use strict';
 /**
  * Elaina Bot v4.0 — Connection Handler
- * Supports QR Code + Custom Pairing Code
+ * 
+ * PAIRING CODE FLOW:
+ * 1. Bot generates 8-digit code (automatic from Baileys)
+ * 2. Code displayed in terminal/console
+ * 3. User enters code in WhatsApp:
+ *    WhatsApp → Settings → Linked Devices → Link with Phone Number
+ * 4. Device linked!
  */
 
 const {
@@ -30,18 +36,18 @@ const MAX_RECONNECT = 10;
 // Readline for terminal input
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 
-/**
- * Ask user input via terminal
- */
 function askQuestion(question) {
     return new Promise(resolve => rl.question(question, resolve));
 }
 
 /**
  * Create WhatsApp connection
+ * 
+ * @param {Object} options
+ * @param {boolean} options.usePairingCode - Use pairing code instead of QR
  */
 async function createConnection(options = {}) {
-    let { pairingCode = false, phoneNumber = '' } = options;
+    const { usePairingCode = false } = options;
 
     console.log('\n╔══════════════════════════════════════╗');
     console.log('║   🌙 ELAINA BOT v4.0 — CONNECTING   ║');
@@ -49,29 +55,18 @@ async function createConnection(options = {}) {
     console.log('║   Rebuilt by: Opanx 🐙              ║');
     console.log('╚══════════════════════════════════════╝\n');
 
-    // Check if pairing code is needed
-    if (!phoneNumber && config.autoPairing) {
-        // Ask for phone number via terminal
-        const customCode = config.pairingCode || 'PANXC-ELMY';
-        console.log(`[PAIRING] Custom pairing code: ${customCode}`);
-        console.log('[PAIRING] This code will be used when linking devices.\n');
-        
-        phoneNumber = await askQuestion('[PAIRING] Enter phone number (628xxx): ');
-        phoneNumber = phoneNumber.replace(/[^0-9]/g, '');
-        
-        if (phoneNumber && phoneNumber.length >= 10) {
-            pairingCode = true;
-        }
-    }
-
     // Load auth state
     const { state, saveCreds } = await useMultiFileAuthState(SESSION_DIR);
+
+    // Check if already registered (has previous session)
+    const isRegistered = state.creds.registered;
+    console.log(`[CONN] Session registered: ${isRegistered}`);
 
     // Fetch latest Baileys version
     const { version, isLatest } = await fetchLatestBaileysVersion();
     console.log(`[CONN] Baileys version: ${version.join('.')} (latest: ${isLatest})`);
 
-    // Create socket
+    // Create socket (don't render QR yet)
     sock = makeWASocket({
         version,
         auth: {
@@ -88,13 +83,52 @@ async function createConnection(options = {}) {
     sock.ev.on('connection.update', async (update) => {
         const { connection, lastDisconnect, qr } = update;
 
-        if (qr) {
-            connectionState = 'qr_needed';
-            console.log('\n[CONN] 📱 Scan QR Code:\n');
-            qrcode.generate(qr, { small: true });
-            console.log('\n[CONN] WhatsApp → Settings → Linked Devices → Link a Device\n');
+        // ─── QR / PAIRING CODE TRIGGER ───
+        // QR event fires even in pairing code mode — use as trigger
+        if (qr && !state.creds.registered) {
+            if (usePairingCode) {
+                // ─── PAIRING CODE MODE ───
+                // Ask for phone number in terminal
+                console.log('\n[PAIRING] 📱 PAIRING CODE MODE');
+                console.log('[PAIRING] Bot will generate an 8-digit code.');
+                console.log('[PAIRING] Enter that code in WhatsApp.\n');
+                
+                const phoneNumber = await askQuestion('[PAIRING] Enter your phone number (628xxx): ');
+                const cleanNumber = phoneNumber.replace(/[^0-9]/g, '');
+                
+                if (cleanNumber && cleanNumber.length >= 10) {
+                    try {
+                        // Request pairing code from Baileys
+                        const code = await sock.requestPairingCode(cleanNumber);
+                        
+                        console.log('\n╔══════════════════════════════════════╗');
+                        console.log('║   📲 PAIRING CODE                    ║');
+                        console.log('╚══════════════════════════════════════╝');
+                        console.log(`\n   🔑 Code: ${code}\n`);
+                        console.log('   📱 Cara:');
+                        console.log('   1. Buka WhatsApp di HP');
+                        console.log('   2. Settings → Linked Devices');
+                        console.log('   3. Tap "Link with Phone Number"');
+                        console.log(`   4. Masukkan code: ${code}`);
+                        console.log('   5. Tap "Done" atau "Link"\n');
+                        console.log('   ⏳ Menunggu konfirmasi...\n');
+                    } catch (e) {
+                        console.error('[PAIRING] Error:', e.message);
+                        console.log('[PAIRING] Falling back to QR code...');
+                    }
+                } else {
+                    console.log('[PAIRING] ❌ Invalid phone number. Falling back to QR...');
+                }
+            } else {
+                // ─── QR CODE MODE ───
+                connectionState = 'qr_needed';
+                console.log('\n[CONN] 📱 Scan QR Code:\n');
+                qrcode.generate(qr, { small: true });
+                console.log('\n[CONN] WhatsApp → Settings → Linked Devices → Link a Device\n');
+            }
         }
 
+        // ─── CONNECTION CLOSED ───
         if (connection === 'close') {
             const statusCode = lastDisconnect?.error?.output?.statusCode;
             const shouldReconnect = statusCode !== DisconnectReason.loggedOut;
@@ -117,10 +151,12 @@ async function createConnection(options = {}) {
             }
         }
 
+        // ─── CONNECTION OPEN ───
         if (connection === 'open') {
             connectionState = 'connected';
             reconnectAttempts = 0;
             const botNumber = sock.user?.id?.split(':')[0] || 'unknown';
+            
             console.log('\n╔══════════════════════════════════════╗');
             console.log('║   ✅ ELAINA BOT — CONNECTED!         ║');
             console.log(`║   📱 Bot: ${botNumber}`);
@@ -129,20 +165,6 @@ async function createConnection(options = {}) {
             console.log('╚══════════════════════════════════════╝\n');
         }
     });
-
-    // Pairing code
-    if (pairingCode && phoneNumber) {
-        console.log(`[PAIRING] 🔗 Requesting pairing code for: ${phoneNumber}`);
-        try {
-            const code = await sock.requestPairingCode(phoneNumber);
-            console.log(`\n[PAIRING] 📲 Your Pairing Code: ${code}`);
-            console.log('[PAIRING] WhatsApp → Settings → Linked Devices → Link with Phone Number');
-            console.log(`[PAIRING] Enter code: ${code}\n`);
-        } catch (e) {
-            console.error('[PAIRING] Error:', e.message);
-            console.log('[PAIRING] Falling back to QR code...');
-        }
-    }
 
     // Save credentials
     sock.ev.on('creds.update', saveCreds);

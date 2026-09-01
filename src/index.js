@@ -6,20 +6,19 @@
  * ║   Developer   : FallZx Infinity           ║
  * ║   Base ORI    : KyyInfinite               ║
  * ║   Rebuilt by  : Opanx 🐙                 ║
+ * ║   Owner       : Panxcz 👑                ║
  * ║   Version     : 4.0.0                     ║
  * ║   License     : MIT (4-Layer Protected)   ║
  * ╚═══════════════════════════════════════════╝
  *
  * ⚠️ Credits must remain intact.
- * ⚠️ Do not remove developer attribution.
  * 🔐 This code is protected by 4-layer encryption.
  */
 
-// Load environment
 require('dotenv').config();
 
 const config = require('./config/settings');
-const { validateLicense, checkIntegrity, getLicenseInfo, CREDITS } = require('./lib/license');
+const { validateLicense, checkIntegrity, CREDITS } = require('./lib/license');
 const { createConnection } = require('./core/connection');
 const { initEvents } = require('./core/eventHandler');
 const { loadCommands, executeCommand } = require('./core/commandLoader');
@@ -30,9 +29,7 @@ const licenseStatus = validateLicense();
 const integrityStatus = checkIntegrity();
 
 if (!licenseStatus.valid) {
-    console.error('❌ License invalid!');
-    console.error('❌ This copy may be tampered with.');
-    console.error('❌ Please download from official source.');
+    console.error('❌ License invalid! This copy may be tampered with.');
     process.exit(1);
 }
 
@@ -40,12 +37,10 @@ if (!integrityStatus.valid) {
     console.error('⚠️  Integrity check failed:');
     integrityStatus.issues.forEach(issue => console.error('   -', issue));
     console.error('❌ Credits may have been removed.');
-    console.error('❌ Please restore credits to continue.');
     process.exit(1);
 }
 
-console.log('✅ License valid');
-console.log('✅ Integrity check passed');
+console.log('✅ License valid | ✅ Integrity passed');
 
 // ============ BANNER ============
 console.log(`
@@ -56,27 +51,20 @@ console.log(`
 ║                                           ║
 ║   🌸 "Your AI-Powered Butler" 🌸         ║
 ║                                           ║
-║   Developer   : FallZx Infinity           ║
-║   Base ORI    : KyyInfinite               ║
-║   Rebuilt by  : Opanx 🐙                 ║
-║   Version     : 4.0.0                     ║
-║   License     : MIT                       ║
+║   👑 Owner: Panxcz                        ║
+║   🐙 Rebuilt by: Opanx                    ║
+║   📦 Version: 4.0.0                       ║
 ║                                           ║
 ╚═══════════════════════════════════════════╝
 `);
 
 // ============ PARSE ARGS ============
 const args = process.argv.slice(2);
-let pairingCode = false;
-let phoneNumber = '';
+const usePairingCode = args.includes('--pairing') || args.includes('-p');
+const useQR = args.includes('--qr') || args.includes('-q');
 
-if (args.includes('--pairing') || args.includes('-p')) {
-    pairingCode = true;
-    const phoneIdx = args.indexOf('--phone') !== -1 ? args.indexOf('--phone') : args.indexOf('-n');
-    if (phoneIdx !== -1 && args[phoneIdx + 1]) {
-        phoneNumber = args[phoneIdx + 1].replace(/[^0-9]/g, '');
-    }
-}
+// Default: QR code mode
+// Use --pairing or -p for pairing code mode
 
 // ============ MAIN ============
 async function main() {
@@ -87,18 +75,17 @@ async function main() {
 
         // 2. Create connection
         console.log('[BOT] Creating WhatsApp connection...');
-        const sock = await createConnection({ pairingCode, phoneNumber });
+        console.log(`[BOT] Mode: ${usePairingCode ? 'PAIRING CODE 📲' : 'QR CODE 📱'}`);
+        
+        const sock = await createConnection({ usePairingCode });
 
         // 3. Initialize event handler
         console.log('[BOT] Initializing event handler...');
         initEvents(sock, executeCommand);
 
         console.log('[BOT] ✅ Bot is ready!');
-        console.log(`[BOT] 📱 Pairing code mode: ${pairingCode ? 'YES' : 'NO (QR code)'}`);
         console.log(`[BOT] 🔧 Prefix: ${config.prefix}`);
-        console.log(`[BOT] 👑 Owner: ${config.ownerName}`);
-        console.log(`[BOT] 🔐 License: ${CREDITS.license} (4-Layer Protected)`);
-        console.log('');
+        console.log(`[BOT] 👑 Owner: ${config.ownerName} (${config.ownerNumber})`);
 
     } catch (e) {
         console.error('[BOT] ❌ Fatal error:', e);
