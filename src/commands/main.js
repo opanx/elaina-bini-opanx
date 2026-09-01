@@ -2,11 +2,13 @@
 /**
  * Elaina Bot v4.0 — Main Commands
  * Menu, Ping, Status, Info, Owner
+ * With HTML Renderer support
  */
 
 const config = require('../config/settings');
-const { sendMessage, reply } = require('../core/connection');
+const { sendMessage, reply, getSock } = require('../core/connection');
 const { getCommandCount } = require('../core/commandLoader');
+const { sendStatusDashboard, sendCard, sendHtml } = require('../lib/htmlRenderer');
 const db = require('../database/engine');
 const os = require('os');
 
@@ -34,79 +36,112 @@ const commands = {
         description: 'Tampilkan menu utama',
         aliases: ['help', 'menuh', 'h'],
         execute: async (ctx) => {
-            const { jid, prefix, isOwner } = ctx;
+            const { jid, prefix, isOwner, msg } = ctx;
             const uptime = formatUptime(Date.now() - startTime);
             const ram = formatBytes(process.memoryUsage().rss);
             const cmdCount = getCommandCount();
             const time = new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' });
 
-            const text = `
-╭─────────────────────────────────╮
-│  🌙 *ELAINA THE PRIMARY*        │
-│  ═══════════════════════════     │
-│  "Your AI-Powered WhatsApp Bot"  │
-│  Rebuilt by *Opanx* 🐙          │
-╰─────────────────────────────────╯
-
-╭─── 📊 *STATUS* ────────────────╮
-│  🟢 Status  : Online            │
-│  ⏱️ Uptime  : ${uptime}
-│  🧠 RAM     : ${ram}
-│  📦 Commands: ${cmdCount}
-│  🕐 Time    : ${time}
-╰────────────────────────────────╯
-
-╭─── 🗂️ *MENU* ─────────────────╮
-│                                  │
-│  🏠 *Main*                       │
-│  ${prefix}menu ${prefix}ping ${prefix}status ${prefix}owner
-│                                  │
-│  📥 *Downloader*                 │
-│  ${prefix}tiktok ${prefix}ig ${prefix}ytmp3 ${prefix}ytmp4
-│  ${prefix}fb ${prefix}spotify ${prefix}mediafire
-│                                  │
-│  🤖 *AI Chat*                    │
-│  ${prefix}gpt ${prefix}gemini ${prefix}deepseek ${prefix}llama
-│  ${prefix}translate ${prefix}ask
-│                                  │
-│  🎨 *AI Image*                   │
-│  ${prefix}img ${prefix}anime ${prefix}ghibli ${prefix}removebg
-│                                  │
-│  🪄 *Sticker*                    │
-│  ${prefix}s ${prefix}toimg ${prefix}attp ${prefix}ttp
-│  ${prefix}brat ${prefix}emojimix
-│                                  │
-│  🎮 *Game*                       │
-│  ${prefix}tebakkata ${prefix}suit ${prefix}slot ${prefix}daily
-│                                  │
-│  👥 *Group*                      │
-│  ${prefix}kick ${prefix}promote ${prefix}demote
-│  ${prefix}tagall ${prefix}antilink
-│                                  │
-│  🛡️ *Protection*                 │
-│  ${prefix}antispam ${prefix}antitoxic ${prefix}welcome
-│                                  │
-│  🔧 *Tools*                      │
-│  ${prefix}ocr ${prefix}calc ${prefix}qrcode ${prefix}translate
-│                                  │
-│  🔐 *Security*                   │
-│  ${prefix}pmguard ${prefix}antibot ${prefix}firewall
-│                                  │
-│  🩺 *Doctor*                     │
-│  ${prefix}doctor ${prefix}healthcheck ${prefix}autofix
-│                                  │
-│  👑 *Owner* ${isOwner ? '✅' : '🔒'}
-│  ${prefix}addcase ${prefix}delcase ${prefix}broadcast
-│  ${prefix}eval ${prefix}restart ${prefix}backup
-│                                  │
-╰────────────────────────────────╯
-
-> ${config.foother}
-> Credits: ${config.credits.developer} | Base: ${config.credits.baseOri}
-> Rebuilt by: *${config.credits.rebuiltBy}*
+            const html = `
+<div style="background:#0a0a0f;border-radius:16px;padding:20px;max-width:400px;font-family:system-ui,-apple-system,sans-serif;color:#fff">
+    <!-- Header -->
+    <div style="text-align:center;padding:15px 0">
+        <h1 style="margin:0;font-size:22px;background:linear-gradient(135deg,#6c63ff,#00d2d3);-webkit-background-clip:text;-webkit-text-fill-color:transparent">🌙 ELAINA THE PRIMARY</h1>
+        <p style="margin:5px 0 0;color:#a0a0b0;font-size:12px">"Your AI-Powered WhatsApp Bot" | Rebuilt by Opanx 🐙</p>
+    </div>
+    
+    <!-- Status Bar -->
+    <div style="background:#12121a;border-radius:10px;padding:12px;margin:10px 0">
+        <div style="display:flex;justify-content:space-between;font-size:12px">
+            <span style="color:#55efc4">🟢 Online</span>
+            <span style="color:#a0a0b0">⏱️ ${uptime}</span>
+            <span style="color:#6c63ff">📦 ${cmdCount} cmds</span>
+        </div>
+    </div>
+    
+    <!-- Menu Grid -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:15px 0">
+        <div style="background:linear-gradient(135deg,#6c63ff20,#6c63ff10);border:1px solid #6c63ff30;border-radius:10px;padding:12px;text-align:center">
+            <div style="font-size:20px">📥</div>
+            <div style="font-size:12px;color:#fff;margin-top:3px">Downloader</div>
+            <div style="font-size:10px;color:#a0a0b0">8 platform</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#00d2d320,#00d2d310);border:1px solid #00d2d330;border-radius:10px;padding:12px;text-align:center">
+            <div style="font-size:20px">🤖</div>
+            <div style="font-size:12px;color:#fff;margin-top:3px">AI Chat</div>
+            <div style="font-size:10px;color:#a0a0b0">4 models</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#55efc420,#55efc410);border:1px solid #55efc430;border-radius:10px;padding:12px;text-align:center">
+            <div style="font-size:20px">🎮</div>
+            <div style="font-size:12px;color:#fff;margin-top:3px">Game</div>
+            <div style="font-size:10px;color:#a0a0b0">5 games</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#ffeaa720,#ffeaa710);border:1px solid #ffeaa730;border-radius:10px;padding:12px;text-align:center">
+            <div style="font-size:20px">🪄</div>
+            <div style="font-size:12px;color:#fff;margin-top:3px">Sticker</div>
+            <div style="font-size:10px;color:#a0a0b0">6 tools</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#e1705520,#e1705510);border:1px solid #e1705530;border-radius:10px;padding:12px;text-align:center">
+            <div style="font-size:20px">👥</div>
+            <div style="font-size:12px;color:#fff;margin-top:3px">Group</div>
+            <div style="font-size:10px;color:#a0a0b0">12 cmds</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#a29bfe20,#a29bfe10);border:1px solid #a29bfe30;border-radius:10px;padding:12px;text-align:center">
+            <div style="font-size:20px">🛡️</div>
+            <div style="font-size:12px;color:#fff;margin-top:3px">Protection</div>
+            <div style="font-size:10px;color:#a0a0b0">8 features</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#fd79a820,#fd79a810);border:1px solid #fd79a830;border-radius:10px;padding:12px;text-align:center">
+            <div style="font-size:20px">🔧</div>
+            <div style="font-size:12px;color:#fff;margin-top:3px">Tools</div>
+            <div style="font-size:10px;color:#a0a0b0">7 tools</div>
+        </div>
+        <div style="background:linear-gradient(135deg,#fdcb6e20,#fdcb6e10);border:1px solid #fdcb6e30;border-radius:10px;padding:12px;text-align:center;${isOwner ? '' : 'opacity:0.5'}">
+            <div style="font-size:20px">👑</div>
+            <div style="font-size:12px;color:#fff;margin-top:3px">Owner</div>
+            <div style="font-size:10px;color:#a0a0b0">${isOwner ? 'Unlocked' : 'Locked'}</div>
+        </div>
+    </div>
+    
+    <!-- Quick Commands -->
+    <div style="background:#12121a;border-radius:10px;padding:12px;margin:10px 0">
+        <div style="font-size:11px;color:#6c6c80;margin-bottom:8px">⚡ QUICK COMMANDS</div>
+        <div style="font-size:12px;color:#a0a0b0">
+            ${prefix}menu • ${prefix}ping • ${prefix}status • ${prefix}owner
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <div style="text-align:center;margin-top:15px;padding-top:10px;border-top:1px solid #1a1a2e">
+        <p style="margin:0;color:#6c6c80;font-size:10px">© FallZx Infinity × KyyInfinite | Rebuilt by Opanx 🐙</p>
+        <p style="margin:5px 0 0;color:#6c6c80;font-size:10px">Do not remove credits!</p>
+    </div>
+</div>
             `.trim();
 
-            await sendMessage(jid, { text });
+            try {
+                const sock = getSock();
+                if (sock) {
+                    await sendHtml(sock, jid, html);
+                } else {
+                    throw new Error('Socket not available');
+                }
+            } catch (e) {
+                // Fallback to plain text
+                const text = `
+🌙 *ELAINA THE PRIMARY*
+"Your AI-Powered WhatsApp Bot"
+
+📊 Status: Online
+⏱️ Uptime: ${uptime}
+🧠 RAM: ${ram}
+📦 Commands: ${cmdCount}
+
+> ${config.foother}
+> Rebuilt by Opanx 🐙
+                `.trim();
+                await sendMessage(jid, { text });
+            }
         },
     },
 
@@ -116,18 +151,42 @@ const commands = {
         description: 'Cek respon bot',
         aliases: ['p'],
         execute: async (ctx) => {
+            const { jid, msg } = ctx;
             const start = Date.now();
-            const msg = await reply(ctx.jid, '🏓 *Pinging...*', ctx.msg);
+            await reply(jid, '🏓 *Pinging...*', msg);
             const latency = Date.now() - start;
 
             let status = '🟢 Excellent';
-            if (latency > 500) status = '🔴 Slow';
-            else if (latency > 200) status = '🟡 Fair';
-            else if (latency > 100) status = '🟢 Good';
+            let color = '55efc4';
+            if (latency > 500) { status = '🔴 Slow'; color = 'e17055'; }
+            else if (latency > 200) { status = '🟡 Fair'; color = 'ffeaa7'; }
+            else if (latency > 100) { status = '🟢 Good'; color = '55efc4'; }
 
-            await sendMessage(ctx.jid, {
-                text: `🏓 *PONG!*\n\n⏱️ Latency: *${latency}ms*\n📊 Status: ${status}\n⏰ ${new Date().toLocaleTimeString('id-ID', { timeZone: 'Asia/Jakarta' })}`,
-            });
+            const html = `
+<div style="background:#0a0a0f;border-radius:16px;padding:20px;max-width:350px;font-family:system-ui,-apple-system,sans-serif;color:#fff;text-align:center">
+    <div style="font-size:40px;margin-bottom:10px">🏓</div>
+    <h2 style="margin:0;font-size:20px;color:#fff">PONG!</h2>
+    
+    <div style="background:#12121a;border-radius:12px;padding:15px;margin:15px 0">
+        <div style="font-size:28px;font-weight:bold;color:#${color}">${latency}ms</div>
+        <div style="font-size:12px;color:#a0a0b0;margin-top:3px">${status}</div>
+    </div>
+    
+    <div style="font-size:11px;color:#6c6c80">
+        ${new Date().toLocaleTimeString('id-ID', { timeZone: 'Asia/Jakarta' })}
+    </div>
+</div>
+            `.trim();
+
+            try {
+                const sock = getSock();
+                if (sock) await sendHtml(sock, jid, html);
+                else throw new Error('No socket');
+            } catch {
+                await sendMessage(jid, {
+                    text: `🏓 *PONG!*\n\n⏱️ Latency: *${latency}ms*\n📊 Status: ${status}`,
+                });
+            }
         },
     },
 
@@ -137,26 +196,39 @@ const commands = {
         description: 'Status lengkap bot',
         aliases: ['botstatus', 'botinfo'],
         execute: async (ctx) => {
+            const { jid, msg } = ctx;
             const uptime = formatUptime(Date.now() - startTime);
             const mem = process.memoryUsage();
-            const cpu = os.loadavg();
-            const cmdCount = getCommandCount();
 
+            try {
+                const sock = getSock();
+                if (sock) {
+                    await sendStatusDashboard(sock, jid, {
+                        botName: config.botName,
+                        uptime,
+                        ram: formatBytes(mem.rss),
+                        commands: getCommandCount(),
+                        ping: '120',
+                        ownerName: config.ownerName,
+                        version: config.credits.version,
+                    });
+                    return;
+                }
+            } catch {}
+
+            // Fallback
             const text = `
 ╭─── 🩺 *BOT STATUS* ───────────╮
 │  🟢 Status: Online              │
 │  ⏱️ Uptime: ${uptime}
 │  🧠 RAM: ${formatBytes(mem.rss)}
 │  💾 Heap: ${formatBytes(mem.heapUsed)} / ${formatBytes(mem.heapTotal)}
-│  ⚡ CPU: ${cpu[0].toFixed(2)}%
-│  📦 Commands: ${cmdCount}
+│  📦 Commands: ${getCommandCount()}
 │  🖥️ Platform: ${os.platform()} ${os.arch()}
 │  📦 Node: ${process.version}
-│  🕐 ${new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' })}
 ╰────────────────────────────────╯
             `.trim();
-
-            await sendMessage(ctx.jid, { text });
+            await sendMessage(jid, { text });
         },
     },
 
@@ -165,6 +237,31 @@ const commands = {
         category: 'main',
         description: 'Info bot',
         execute: async (ctx) => {
+            const { jid, msg } = ctx;
+
+            try {
+                const sock = getSock();
+                if (sock) {
+                    await sendCard(sock, jid, {
+                        title: 'ℹ️ Bot Info',
+                        subtitle: 'Elaina The Primary v' + config.credits.version,
+                        items: [
+                            { icon: '🤖', label: 'Name', value: config.botName },
+                            { icon: '📦', label: 'Version', value: config.credits.version },
+                            { icon: '👑', label: 'Owner', value: config.ownerName },
+                            { icon: '🔧', label: 'Developer', value: config.credits.developer },
+                            { icon: '📚', label: 'Base', value: config.credits.baseOri },
+                            { icon: '🐙', label: 'Rebuilt by', value: config.credits.rebuiltBy },
+                            { icon: '📝', label: 'License', value: 'MIT' },
+                        ],
+                        footer: 'Do not remove credits!',
+                        color: '6c63ff',
+                    });
+                    return;
+                }
+            } catch {}
+
+            // Fallback
             const text = `
 ╭─── ℹ️ *BOT INFO* ─────────────╮
 │  🤖 Name: ${config.botName}
@@ -176,16 +273,9 @@ const commands = {
 │  📝 License: MIT
 │  🌐 GitHub: github.com/opanx/elaina-bini-opanx
 ╰────────────────────────────────╯
-
-> *Credits:*
-> • Developer: ${config.credits.developer}
-> • Base ORI: ${config.credits.baseOri}
-> • Rebuilt by: *${config.credits.rebuiltBy}*
-
 > Do not remove credits!
             `.trim();
-
-            await sendMessage(ctx.jid, { text });
+            await sendMessage(jid, { text });
         },
     },
 
@@ -194,23 +284,30 @@ const commands = {
         category: 'main',
         description: 'Kontak owner',
         execute: async (ctx) => {
+            const { jid, msg } = ctx;
             const ownerNum = config.ownerNumber.split(',')[0].replace(/[^0-9]/g, '');
-            const text = `
-╭─── 👑 *OWNER* ────────────────╮
-│  👤 Name: ${config.ownerName}
-│  📱 Number: ${ownerNum}
-│  🤖 Bot: ${config.botName}
-│  🐙 Rebuilt by: ${config.credits.rebuiltBy}
-╰────────────────────────────────╯
 
-> Hubungi owner untuk:
-> • Sewa bot
-> • Laporan bug
-> • Saran fitur
-> • Kerjasama
-            `.trim();
+            try {
+                const sock = getSock();
+                if (sock) {
+                    await sendCard(sock, jid, {
+                        title: '👑 Owner',
+                        subtitle: 'Hubungi owner untuk info',
+                        items: [
+                            { icon: '👤', label: 'Name', value: config.ownerName },
+                            { icon: '📱', label: 'Number', value: ownerNum },
+                            { icon: '🤖', label: 'Bot', value: config.botName },
+                            { icon: '🐙', label: 'Rebuilt by', value: config.credits.rebuiltBy },
+                        ],
+                        footer: 'Sewa bot • Laporan bug • Saran fitur',
+                        color: 'fdcb6e',
+                    });
+                    return;
+                }
+            } catch {}
 
-            await sendMessage(ctx.jid, { text });
+            // Fallback
+            await sendMessage(jid, { text: `👑 *OWNER*\n\n👤 Name: ${config.ownerName}\n📱 Number: ${ownerNum}` });
         },
     },
 
@@ -219,8 +316,7 @@ const commands = {
         category: 'main',
         description: 'Uptime bot',
         execute: async (ctx) => {
-            const uptime = formatUptime(Date.now() - startTime);
-            await reply(ctx.jid, `⏱️ *Runtime:* ${uptime}`, ctx.msg);
+            await reply(ctx.jid, `⏱️ *Runtime:* ${formatUptime(Date.now() - startTime)}`, ctx.msg);
         },
     },
 };
