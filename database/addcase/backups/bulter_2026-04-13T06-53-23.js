@@ -4391,13 +4391,13 @@ const generateMiniUserCard = async (userData, loadImage) => {
 };
   
 var GROQ_KEYS = [
-    'YOUR_GROQ_KEY_HERE',
-    'YOUR_GROQ_KEY_HERE',
-    'YOUR_GROQ_KEY_HERE',
-    'YOUR_GROQ_KEY_HERE',
-    'YOUR_GROQ_KEY_HERE',
-    'YOUR_GROQ_KEY_HERE',
-    'YOUR_GROQ_KEY_HERE'
+    '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',
+    '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',
+    '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',
+    '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',
+    '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',
+    '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',
+    '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'
 ]
 
 var _groqKeyIndex = 0
