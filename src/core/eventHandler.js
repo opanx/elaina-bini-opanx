@@ -7,6 +7,7 @@
 const config = require('../config/settings');
 const db = require('../database/engine');
 const { sendMessage, reply } = require('./connection');
+const WelcomeCard = require('../lib/welcomeCard');
 
 let sock = null;
 let commandHandler = null;
@@ -185,7 +186,6 @@ async function handleGroupParticipants({ id, participants, action }) {
 
     if (action === 'add' && groupSettings.welcome) {
         for (const participant of participants) {
-            const WelcomeCard = require('../lib/welcomeCard');
             try {
                 const caption = groupSettings.welcomeMsg || `Welcome @${participant.split('@')[0]} to ${'this group'}! 🎉`;
                 await sendMessage(id, {

@@ -1,0 +1,78 @@
+{
+  "backups": [
+    {
+      "id": "bk_1775511198658",
+      "trigger": "auto_interval",
+      "ts": 1775511198658,
+      "totalSize": 17038,
+      "fileCount": 6,
+      "path": "./database/autobackup/bk_1775511198658.json"
+    },
+    {
+      "id": "bk_1775680692536",
+      "trigger": "auto_interval",
+      "ts": 1775680692536,
+      "totalSize": 33435,
+      "fileCount": 6,
+      "path": "./database/autobackup/bk_1775680692536.json"
+    },
+    {
+      "id": "bk_1775710968173",
+      "trigger": "auto_interval",
+      "ts": 1775710968173,
+      "totalSize": 34341,
+      "fileCount": 6,
+      "path": "./database/autobackup/bk_1775710968173.json"
+    },
+    {
+      "id": "bk_1775945253681",
+      "trigger": "auto_interval",
+      "ts": 1775945253681,
+      "totalSize": 43004,
+      "fileCount": 7,
+      "path": "./database/autobackup/bk_1775945253681.json"
+    },
+    {
+      "id": "bk_1776023695777",
+      "trigger": "auto_interval",
+      "ts": 1776023695777,
+      "totalSize": 60319,
+      "fileCount": 8,
+      "path": "./database/autobackup/bk_1776023695777.json"
+    },
+    {
+      "id": "bk_1776058754200",
+      "trigger": "auto_interval",
+      "ts": 1776058754200,
+      "totalSize": 61762,
+      "fileCount": 8,
+      "path": "./database/autobackup/bk_1776058754200.json"
+    },
+    {
+      "id": "bk_1783075417560",
+      "trigger": "auto_interval",
+      "ts": 1783075417560,
+      "totalSize": 65413,
+      "fileCount": 8,
+      "path": "./database/autobackup/bk_1783075417560.json"
+    },
+    {
+      "id": "bk_1783097017540",
+      "trigger": "auto_interval",
+      "ts": 1783097017540,
+      "totalSize": 65636,
+      "fileCount": 8,
+      "path": "./database/autobackup/bk_1783097017540.json"
+    },
+    {
+      "id": "bk_1783118617540",
+      "trigger": "auto_interval",
+      "ts": 1783118617540,
+      "totalSize": 65690,
+      "fileCount": 8,
+      "path": "./database/autobackup/bk_1783118617540.json"
+    }
+  ],
+  "lastBackup": 1783118617540,
+  "lastTrigger": "auto_interval"
+}

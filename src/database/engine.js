@@ -276,11 +276,43 @@ const deleteCommand = (name) => {
     _jWrite(path.join(DB_DIR, 'commands.json'), db);
 };
 
+// ============ WARNINGS ============
+const gsAddWarn = (gid, jid) => {
+    const gs = gsGet(gid);
+    if (!gs.warnings) gs.warnings = {};
+    gs.warnings[jid] = (gs.warnings[jid] || 0) + 1;
+    gsSet(gid, { warnings: gs.warnings });
+    return gs.warnings[jid];
+};
+
+const gsResetWarn = (gid, jid) => {
+    const gs = gsGet(gid);
+    if (!gs.warnings) gs.warnings = {};
+    gs.warnings[jid] = 0;
+    gsSet(gid, { warnings: gs.warnings });
+};
+
+// ============ LEADERBOARD ============
+const getTopUsers = (limit = 10) => {
+    if (_sqliteOK) {
+        try {
+            return DB.prepare('SELECT jid, name, exp, koin FROM user_profile ORDER BY koin DESC LIMIT ?').all(limit);
+        } catch {}
+    }
+    const db = _jRead(path.join(DB_DIR, 'userprofile.json'), {});
+    return Object.entries(db)
+        .map(([jid, u]) => ({ jid, name: u.name || jid.split('@')[0], exp: u.exp || 0, koin: u.koin || 0 }))
+        .sort((a, b) => b.koin - a.koin)
+        .slice(0, limit);
+};
+
 module.exports = {
     DB, isSQLite: () => _sqliteOK,
     loadList, saveList,
     gsGet, gsSet, GS_DEFAULT,
+    gsAddWarn, gsResetWarn,
     getUser, saveUser,
+    getTopUsers,
     loadSewa, saveSewa,
     loadCommands, saveCommand, deleteCommand,
 };

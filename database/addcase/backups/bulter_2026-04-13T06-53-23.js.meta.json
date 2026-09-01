@@ -1,0 +1,11 @@
+{
+  "originalPath": "./bulter.js",
+  "backupPath": "./database/addcase/backups/bulter_2026-04-13T06-53-23.js",
+  "checksum": "88796928045c0297a50d6a3770ce02bee027983578dfef70aa9580350ecf2283",
+  "size": 1470522,
+  "lineCount": 29786,
+  "createdAt": "2026-04-13T06:53:25.533Z",
+  "injectedCases": [],
+  "braceBalance": 1,
+  "syntaxErrors": 1
+}

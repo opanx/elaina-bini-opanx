@@ -6,51 +6,65 @@
  * ║   Developer   : FallZx Infinity           ║
  * ║   Base ORI    : KyyInfinite               ║
  * ║   Rebuilt by  : Opanx 🐙                 ║
- * ║   Version     : 4.0.0                     ║
+ * ║   Owner       : Panxcz 👑                ║
+ * ║   Version     : 4.1.0                     ║
+ * ║   License     : MIT (4-Layer Protected)   ║
  * ╚═══════════════════════════════════════════╝
  *
- * Credits must remain intact.
- * Do not remove developer attribution.
+ * ⚠️ Credits must remain intact.
+ * 🔐 This code is protected by 4-layer encryption.
  */
 
-// Load environment
 require('dotenv').config();
 
 const config = require('./config/settings');
+const { validateLicense, checkIntegrity } = require('./lib/license');
 const { createConnection } = require('./core/connection');
 const { initEvents } = require('./core/eventHandler');
 const { loadCommands, executeCommand } = require('./core/commandLoader');
-const db = require('./database/engine');
+
+// ============ LICENSE CHECK ============
+console.log('\n🔐 Checking license...');
+const licenseStatus = validateLicense();
+const integrityStatus = checkIntegrity();
+
+if (!licenseStatus.valid) {
+    console.error('❌ License invalid! This copy may be tampered with.');
+    process.exit(1);
+}
+
+if (!integrityStatus.valid) {
+    console.error('⚠️  Integrity check failed:');
+    integrityStatus.issues.forEach(issue => console.error('   -', issue));
+    console.error('❌ Credits may have been removed.');
+    process.exit(1);
+}
+
+console.log('✅ License valid | ✅ Integrity passed');
 
 // ============ BANNER ============
 console.log(`
 ╔═══════════════════════════════════════════╗
 ║                                           ║
-║   🌙  ELAINA — THE PRIMARY  🌙           ║
+║   🌙  𝑬𝒍𝒂𝒊𝒏𝒂 — 𝑻𝒉𝒆 𝑷𝒓𝒊𝒎𝒂𝒓𝒚  🌙       ║
 ║   ═══════════════════════════════         ║
 ║                                           ║
-║   Developer   : FallZx Infinity           ║
-║   Base ORI    : KyyInfinite               ║
-║   Rebuilt by  : Opanx 🐙                 ║
-║   Version     : 4.0.0                     ║
+║   🌸 "Your AI-Powered Butler" 🌸         ║
 ║                                           ║
-║   "Your AI-Powered WhatsApp Butler"       ║
+║   👑 Owner: Panxcz                        ║
+║   🐙 Rebuilt by: Opanx                    ║
+║   📦 Version: 4.1.0                       ║
 ║                                           ║
 ╚═══════════════════════════════════════════╝
 `);
 
 // ============ PARSE ARGS ============
 const args = process.argv.slice(2);
-let pairingCode = false;
-let phoneNumber = '';
+const usePairingCode = args.includes('--pairing') || args.includes('-p');
+const useQR = args.includes('--qr') || args.includes('-q');
 
-if (args.includes('--pairing') || args.includes('-p')) {
-    pairingCode = true;
-    const phoneIdx = args.indexOf('--phone') !== -1 ? args.indexOf('--phone') : args.indexOf('-n');
-    if (phoneIdx !== -1 && args[phoneIdx + 1]) {
-        phoneNumber = args[phoneIdx + 1].replace(/[^0-9]/g, '');
-    }
-}
+// Default: QR code mode
+// Use --pairing or -p for pairing code mode
 
 // ============ MAIN ============
 async function main() {
@@ -61,17 +75,17 @@ async function main() {
 
         // 2. Create connection
         console.log('[BOT] Creating WhatsApp connection...');
-        const sock = await createConnection({ pairingCode, phoneNumber });
+        console.log(`[BOT] Mode: ${usePairingCode ? 'PAIRING CODE 📲' : 'QR CODE 📱'}`);
+        
+        const sock = await createConnection({ usePairingCode });
 
         // 3. Initialize event handler
         console.log('[BOT] Initializing event handler...');
         initEvents(sock, executeCommand);
 
         console.log('[BOT] ✅ Bot is ready!');
-        console.log(`[BOT] 📱 Pairing code mode: ${pairingCode ? 'YES' : 'NO (QR code)'}`);
         console.log(`[BOT] 🔧 Prefix: ${config.prefix}`);
-        console.log(`[BOT] 👑 Owner: ${config.ownerName}`);
-        console.log('');
+        console.log(`[BOT] 👑 Owner: ${config.ownerName} (${config.ownerNumber})`);
 
     } catch (e) {
         console.error('[BOT] ❌ Fatal error:', e);

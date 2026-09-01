@@ -23,10 +23,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install --legacy-peer-deps
 
       - name: Verify project structure
         run: |
@@ -39,11 +38,12 @@ jobs:
           echo "✅ All core files present!"
 
       - name: Check syntax
-        run: node --check src/index.js
-        run: node --check src/config/settings.js
-        run: node --check src/database/engine.js
-        run: node --check src/core/connection.js
-        run: node --check src/core/commandLoader.js
+        run: |
+          node --check src/index.js
+          node --check src/config/settings.js
+          node --check src/database/engine.js
+          node --check src/core/connection.js
+          node --check src/core/commandLoader.js
 
       - name: Build success
         run: echo "✅ Build successful! Bot is ready to deploy."

@@ -1,0 +1,1153 @@
+{
+  "id": "bk_1775511198658",
+  "trigger": "auto_interval",
+  "ts": 1775511198658,
+  "files": {
+    "sewa": {
+      "data": {
+        "120363423370858177@g.us": {
+          "paket": "basic",
+          "expiry": 1778071365225,
+          "lifetime": false,
+          "notifSent": false,
+          "addedBy": "6283815201912@s.whatsapp.net"
+        },
+        "120363422846424347@g.us": {
+          "paket": "basic",
+          "expiry": 1775570782449,
+          "lifetime": false,
+          "notifSent": true,
+          "addedBy": "6283815201912@s.whatsapp.net"
+        }
+      },
+      "size": 286,
+      "hash": "d491a9dc",
+      "path": "./database/sewa.json"
+    },
+    "groupsettings": {
+      "data": {
+        "120363406525393123@g.us": {
+          "antilink": false,
+          "antilinkWA": false,
+          "antilinkWhitelist": [],
+          "antiimage": false,
+          "antivideo": false,
+          "antidocument": false,
+          "antisticker": false,
+          "antiforward": false,
+          "antiaudio": false,
+          "antigif": false,
+          "anticontact": false,
+          "antilocation": false,
+          "antitoxic": false,
+          "maxWarn": 3,
+          "warnings": {},
+          "blacklist": [],
+          "muted": [],
+          "welcome": false,
+          "leave": false,
+          "welcomeMsg": "",
+          "leaveMsg": "",
+          "antispam": false,
+          "spamMax": 50,
+          "spamWarn1": 10,
+          "spamWarn2": 25,
+          "spamWarn3": 40,
+          "antivortex": false,
+          "slowmode": false,
+          "slowmodeDelay": 10,
+          "autoreply": {},
+          "bannednumbers": [],
+          "antiautobot": false,
+          "protectgc": false,
+          "rules": "",
+          "scheduleOpen": "",
+          "scheduleClose": "",
+          "scheduleActive": false,
+          "timezone": "Asia/Jakarta",
+          "verify": false,
+          "verifyQuestion": "",
+          "verifyAnswer": "",
+          "verifyTimeout": 5,
+          "antiraid": false,
+          "antiraidMax": 5,
+          "antiraidWindow": 10,
+          "lockprofile": false,
+          "antinsfw": false,
+          "nsfwLogs": [],
+          "antiocrlink": false,
+          "antiocrtext": false
+        },
+        "120363426512701657@g.us": {
+          "antilink": false,
+          "antilinkWA": false,
+          "antilinkWhitelist": [],
+          "antiimage": false,
+          "antivideo": false,
+          "antidocument": false,
+          "antisticker": false,
+          "antiforward": false,
+          "antiaudio": false,
+          "antigif": false,
+          "anticontact": false,
+          "antilocation": false,
+          "antitoxic": false,
+          "maxWarn": 3,
+          "warnings": {},
+          "blacklist": [],
+          "muted": [],
+          "welcome": false,
+          "leave": false,
+          "welcomeMsg": "",
+          "leaveMsg": "",
+          "antispam": false,
+          "spamMax": 50,
+          "spamWarn1": 10,
+          "spamWarn2": 25,
+          "spamWarn3": 40,
+          "antivortex": false,
+          "slowmode": false,
+          "slowmodeDelay": 10,
+          "autoreply": {},
+          "bannednumbers": [],
+          "antiautobot": false,
+          "protectgc": false,
+          "rules": "",
+          "scheduleOpen": "",
+          "scheduleClose": "",
+          "scheduleActive": false,
+          "timezone": "Asia/Jakarta",
+          "verify": false,
+          "verifyQuestion": "",
+          "verifyAnswer": "",
+          "verifyTimeout": 5,
+          "antiraid": false,
+          "antiraidMax": 5,
+          "antiraidWindow": 10,
+          "lockprofile": false,
+          "antinsfw": false,
+          "nsfwLogs": [],
+          "antiocrlink": false,
+          "antiocrtext": false
+        },
+        "120363423370858177@g.us": {
+          "antilink": false,
+          "antilinkWA": false,
+          "antilinkWhitelist": [],
+          "antiimage": false,
+          "antivideo": false,
+          "antidocument": false,
+          "antisticker": false,
+          "antiforward": false,
+          "antiaudio": false,
+          "antigif": false,
+          "anticontact": false,
+          "antilocation": false,
+          "antitoxic": false,
+          "maxWarn": 3,
+          "warnings": {},
+          "blacklist": [],
+          "muted": [],
+          "welcome": false,
+          "leave": false,
+          "welcomeMsg": "",
+          "leaveMsg": "",
+          "antispam": false,
+          "spamMax": 50,
+          "spamWarn1": 10,
+          "spamWarn2": 25,
+          "spamWarn3": 40,
+          "antivortex": false,
+          "slowmode": false,
+          "slowmodeDelay": 10,
+          "autoreply": {},
+          "bannednumbers": [],
+          "antiautobot": false,
+          "protectgc": false,
+          "rules": "",
+          "scheduleOpen": "",
+          "scheduleClose": "",
+          "scheduleActive": false,
+          "timezone": "Asia/Jakarta",
+          "verify": false,
+          "verifyQuestion": "",
+          "verifyAnswer": "",
+          "verifyTimeout": 5,
+          "antiraid": false,
+          "antiraidMax": 5,
+          "antiraidWindow": 10,
+          "lockprofile": false,
+          "antinsfw": false,
+          "nsfwLogs": [],
+          "antiocrlink": false,
+          "antiocrtext": false
+        },
+        "120363422846424347@g.us": {
+          "antilink": false,
+          "antilinkWA": false,
+          "antilinkWhitelist": [],
+          "antiimage": false,
+          "antivideo": false,
+          "antidocument": false,
+          "antisticker": false,
+          "antiforward": false,
+          "antiaudio": false,
+          "antigif": false,
+          "anticontact": false,
+          "antilocation": false,
+          "antitoxic": false,
+          "maxWarn": 3,
+          "warnings": {},
+          "blacklist": [],
+          "muted": [],
+          "welcome": false,
+          "leave": false,
+          "welcomeMsg": "",
+          "leaveMsg": "",
+          "antispam": false,
+          "spamMax": 50,
+          "spamWarn1": 10,
+          "spamWarn2": 25,
+          "spamWarn3": 40,
+          "antivortex": false,
+          "slowmode": false,
+          "slowmodeDelay": 10,
+          "autoreply": {},
+          "bannednumbers": [],
+          "antiautobot": false,
+          "protectgc": false,
+          "rules": "",
+          "scheduleOpen": "",
+          "scheduleClose": "",
+          "scheduleActive": false,
+          "timezone": "Asia/Jakarta",
+          "verify": false,
+          "verifyQuestion": "",
+          "verifyAnswer": "",
+          "verifyTimeout": 5,
+          "antiraid": false,
+          "antiraidMax": 5,
+          "antiraidWindow": 10,
+          "lockprofile": false,
+          "antinsfw": false,
+          "nsfwLogs": [],
+          "antiocrlink": false,
+          "antiocrtext": false
+        },
+        "120363286746112331@g.us": {
+          "antilink": false,
+          "antilinkWA": false,
+          "antilinkWhitelist": [],
+          "antiimage": false,
+          "antivideo": false,
+          "antidocument": false,
+          "antisticker": false,
+          "antiforward": false,
+          "antiaudio": false,
+          "antigif": false,
+          "anticontact": false,
+          "antilocation": false,
+          "antitoxic": false,
+          "maxWarn": 3,
+          "warnings": {},
+          "blacklist": [],
+          "muted": [],
+          "welcome": false,
+          "leave": false,
+          "welcomeMsg": "",
+          "leaveMsg": "",
+          "antispam": false,
+          "spamMax": 50,
+          "spamWarn1": 10,
+          "spamWarn2": 25,
+          "spamWarn3": 40,
+          "antivortex": false,
+          "slowmode": false,
+          "slowmodeDelay": 10,
+          "autoreply": {},
+          "bannednumbers": [],
+          "antiautobot": false,
+          "protectgc": false,
+          "rules": "",
+          "scheduleOpen": "",
+          "scheduleClose": "",
+          "scheduleActive": false,
+          "timezone": "Asia/Jakarta",
+          "verify": false,
+          "verifyQuestion": "",
+          "verifyAnswer": "",
+          "verifyTimeout": 5,
+          "antiraid": false,
+          "antiraidMax": 5,
+          "antiraidWindow": 10,
+          "lockprofile": false,
+          "antinsfw": false,
+          "nsfwLogs": [],
+          "antiocrlink": false,
+          "antiocrtext": false
+        },
+        "120363406234119805@g.us": {
+          "antilink": false,
+          "antilinkWA": false,
+          "antilinkWhitelist": [],
+          "antiimage": false,
+          "antivideo": false,
+          "antidocument": false,
+          "antisticker": false,
+          "antiforward": false,
+          "antiaudio": false,
+          "antigif": false,
+          "anticontact": false,
+          "antilocation": false,
+          "antitoxic": false,
+          "maxWarn": 3,
+          "warnings": {},
+          "blacklist": [],
+          "muted": [],
+          "welcome": false,
+          "leave": false,
+          "welcomeMsg": "",
+          "leaveMsg": "",
+          "antispam": false,
+          "spamMax": 50,
+          "spamWarn1": 10,
+          "spamWarn2": 25,
+          "spamWarn3": 40,
+          "antivortex": false,
+          "slowmode": false,
+          "slowmodeDelay": 10,
+          "autoreply": {},
+          "bannednumbers": [],
+          "antiautobot": false,
+          "protectgc": false,
+          "rules": "",
+          "scheduleOpen": "",
+          "scheduleClose": "",
+          "scheduleActive": false,
+          "timezone": "Asia/Jakarta",
+          "verify": false,
+          "verifyQuestion": "",
+          "verifyAnswer": "",
+          "verifyTimeout": 5,
+          "antiraid": false,
+          "antiraidMax": 5,
+          "antiraidWindow": 10,
+          "lockprofile": false,
+          "antinsfw": false,
+          "nsfwLogs": [],
+          "antiocrlink": false,
+          "antiocrtext": false
+        },
+        "120363404329699849@g.us": {
+          "antilink": false,
+          "antilinkWA": false,
+          "antilinkWhitelist": [],
+          "antiimage": false,
+          "antivideo": false,
+          "antidocument": false,
+          "antisticker": false,
+          "antiforward": false,
+          "antiaudio": false,
+          "antigif": false,
+          "anticontact": false,
+          "antilocation": false,
+          "antitoxic": false,
+          "maxWarn": 3,
+          "warnings": {},
+          "blacklist": [],
+          "muted": [],
+          "welcome": false,
+          "leave": false,
+          "welcomeMsg": "",
+          "leaveMsg": "",
+          "antispam": false,
+          "spamMax": 50,
+          "spamWarn1": 10,
+          "spamWarn2": 25,
+          "spamWarn3": 40,
+          "antivortex": false,
+          "slowmode": false,
+          "slowmodeDelay": 10,
+          "autoreply": {},
+          "bannednumbers": [],
+          "antiautobot": false,
+          "protectgc": false,
+          "rules": "",
+          "scheduleOpen": "",
+          "scheduleClose": "",
+          "scheduleActive": false,
+          "timezone": "Asia/Jakarta",
+          "verify": false,
+          "verifyQuestion": "",
+          "verifyAnswer": "",
+          "verifyTimeout": 5,
+          "antiraid": false,
+          "antiraidMax": 5,
+          "antiraidWindow": 10,
+          "lockprofile": false,
+          "antinsfw": false,
+          "nsfwLogs": [],
+          "antiocrlink": false,
+          "antiocrtext": false
+        },
+        "120363321042595652@g.us": {
+          "antilink": false,
+          "antilinkWA": false,
+          "antilinkWhitelist": [],
+          "antiimage": false,
+          "antivideo": false,
+          "antidocument": false,
+          "antisticker": false,
+          "antiforward": false,
+          "antiaudio": false,
+          "antigif": false,
+          "anticontact": false,
+          "antilocation": false,
+          "antitoxic": false,
+          "maxWarn": 3,
+          "warnings": {},
+          "blacklist": [],
+          "muted": [],
+          "welcome": false,
+          "leave": false,
+          "welcomeMsg": "",
+          "leaveMsg": "",
+          "antispam": false,
+          "spamMax": 50,
+          "spamWarn1": 10,
+          "spamWarn2": 25,
+          "spamWarn3": 40,
+          "antivortex": false,
+          "slowmode": false,
+          "slowmodeDelay": 10,
+          "autoreply": {},
+          "bannednumbers": [],
+          "antiautobot": false,
+          "protectgc": false,
+          "rules": "",
+          "scheduleOpen": "",
+          "scheduleClose": "",
+          "scheduleActive": false,
+          "timezone": "Asia/Jakarta",
+          "verify": false,
+          "verifyQuestion": "",
+          "verifyAnswer": "",
+          "verifyTimeout": 5,
+          "antiraid": false,
+          "antiraidMax": 5,
+          "antiraidWindow": 10,
+          "lockprofile": false,
+          "antinsfw": false,
+          "nsfwLogs": [],
+          "antiocrlink": false,
+          "antiocrtext": false
+        },
+        "120363419934792413@g.us": {
+          "antilink": false,
+          "antilinkWA": false,
+          "antilinkWhitelist": [],
+          "antiimage": false,
+          "antivideo": false,
+          "antidocument": false,
+          "antisticker": false,
+          "antiforward": false,
+          "antiaudio": false,
+          "antigif": false,
+          "anticontact": false,
+          "antilocation": false,
+          "antitoxic": false,
+          "maxWarn": 3,
+          "warnings": {},
+          "blacklist": [],
+          "muted": [],
+          "welcome": false,
+          "leave": false,
+          "welcomeMsg": "",
+          "leaveMsg": "",
+          "antispam": false,
+          "spamMax": 50,
+          "spamWarn1": 10,
+          "spamWarn2": 25,
+          "spamWarn3": 40,
+          "antivortex": false,
+          "slowmode": false,
+          "slowmodeDelay": 10,
+          "autoreply": {},
+          "bannednumbers": [],
+          "antiautobot": false,
+          "protectgc": false,
+          "rules": "",
+          "scheduleOpen": "",
+          "scheduleClose": "",
+          "scheduleActive": false,
+          "timezone": "Asia/Jakarta",
+          "verify": false,
+          "verifyQuestion": "",
+          "verifyAnswer": "",
+          "verifyTimeout": 5,
+          "antiraid": false,
+          "antiraidMax": 5,
+          "antiraidWindow": 10,
+          "lockprofile": false,
+          "antinsfw": false,
+          "nsfwLogs": [],
+          "antiocrlink": false,
+          "antiocrtext": false
+        }
+      },
+      "size": 8128,
+      "hash": "91656b37",
+      "path": "./database/groupsettings.json"
+    },
+    "premium": {
+      "data": {},
+      "size": 2,
+      "hash": "99914b93",
+      "path": "./database/premium.json"
+    },
+    "grupstats": {
+      "data": {
+        "120363406525393123@g.us": {
+          "members": {
+            "6288286171085@s.whatsapp.net": 2,
+            "6283815201912@s.whatsapp.net": 14,
+            "6283168758640@s.whatsapp.net": 2
+          },
+          "hourly": {
+            "2026-04-06": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              18,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "daily": {
+            "2026-04-06": 18
+          },
+          "lastSeen": {
+            "6288286171085@s.whatsapp.net": 1775478873383,
+            "6283815201912@s.whatsapp.net": 1775479165357,
+            "6283168758640@s.whatsapp.net": 1775479119393
+          },
+          "names": {
+            "6288286171085@s.whatsapp.net": "Satan AI",
+            "6283815201912@s.whatsapp.net": "marky",
+            "6283168758640@s.whatsapp.net": "SatanicHaxor404<\\>"
+          }
+        },
+        "120363423370858177@g.us": {
+          "members": {
+            "6283815201912@s.whatsapp.net": 10,
+            "62881036032734@s.whatsapp.net": 1
+          },
+          "hourly": {
+            "2026-04-06": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              11,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "daily": {
+            "2026-04-06": 11
+          },
+          "lastSeen": {
+            "6283815201912@s.whatsapp.net": 1775479073888,
+            "62881036032734@s.whatsapp.net": 1775479086087
+          },
+          "names": {
+            "6283815201912@s.whatsapp.net": "marky",
+            "62881036032734@s.whatsapp.net": "雷纳"
+          }
+        },
+        "120363426512701657@g.us": {
+          "members": {
+            "6283815201912@s.whatsapp.net": 20,
+            "6281325421833@s.whatsapp.net": 6,
+            "584169606904@s.whatsapp.net": 13,
+            "584162132924@s.whatsapp.net": 6
+          },
+          "hourly": {
+            "2026-04-06": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              45,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "daily": {
+            "2026-04-06": 45
+          },
+          "lastSeen": {
+            "6283815201912@s.whatsapp.net": 1775479177367,
+            "6281325421833@s.whatsapp.net": 1775479024788,
+            "584169606904@s.whatsapp.net": 1775479179035,
+            "584162132924@s.whatsapp.net": 1775479169319
+          },
+          "names": {
+            "6283815201912@s.whatsapp.net": "marky",
+            "6281325421833@s.whatsapp.net": "•|™",
+            "584169606904@s.whatsapp.net": "JmsDeauth",
+            "584162132924@s.whatsapp.net": "Chaywa"
+          }
+        }
+      },
+      "size": 1572,
+      "hash": "002ebd6d",
+      "path": "./database/grupstats.json"
+    },
+    "security": {
+      "data": {
+        "auditlog.json": {
+          "120363423370858177@g.us": [
+            {
+              "ts": 1775479365213,
+              "time": "6/4/2026, 12.42.45",
+              "actor": "6283815201912@s.whatsapp.net",
+              "action": "addsewa",
+              "target": "",
+              "detail": "30"
+            }
+          ],
+          "120363406234119805@g.us": [
+            {
+              "ts": 1775481986078,
+              "time": "6/4/2026, 13.26.26",
+              "actor": "__escalation__",
+              "action": "ESCALATE_L1",
+              "target": "62881036032734@s.whatsapp.net",
+              "detail": "🔗 Link invite grup lain tidak diizinkan"
+            },
+            {
+              "ts": 1775482420734,
+              "time": "6/4/2026, 13.33.40",
+              "actor": "6283815201912@s.whatsapp.net",
+              "action": "antilink",
+              "target": "",
+              "detail": "off"
+            }
+          ],
+          "120363422846424347@g.us": [
+            {
+              "ts": 1775484382448,
+              "time": "6/4/2026, 14.06.22",
+              "actor": "6283815201912@s.whatsapp.net",
+              "action": "addsewa",
+              "target": "",
+              "detail": "1"
+            }
+          ]
+        },
+        "escalation.json": {
+          "120363406234119805@g.us": {
+            "62881036032734@s.whatsapp.net": {
+              "currentLevel": 0,
+              "history": [
+                {
+                  "level": 1,
+                  "reason": "🔗 Link invite grup lain tidak diizinkan",
+                  "ts": 1775481986077
+                },
+                {
+                  "level": 0,
+                  "reason": "Auto de-escalate",
+                  "ts": 1775503998166
+                }
+              ],
+              "firstViolation": 1775481986077,
+              "lastViolation": 1775481986077
+            }
+          }
+        },
+        "firewall.json": {
+          "120363406234119805@g.us": {
+            "enabled": true,
+            "whitelist": [],
+            "blacklist": [],
+            "graylist": [],
+            "rules": [],
+            "autoEscalate": true,
+            "escalateThreshold": 5,
+            "maxMsgPerMin": 30,
+            "blockMediaFromNew": true,
+            "created": 1775481986001,
+            "updatedBy": ""
+          }
+        },
+        "flood_forensic.json": {
+          "120363406234119805@g.us": [
+            {
+              "ts": 1775481986079,
+              "eventType": "🔗 Link invite grup lain tidak diizinkan",
+              "senderId": "62881036032734@s.whatsapp.net",
+              "metadata": {
+                "command": "*butuh",
+                "actions": [
+                  "invite_link_blocked",
+                  "escalated_to_L1"
+                ]
+              }
+            }
+          ]
+        },
+        "incidents.json": {
+          "120363406234119805@g.us": [
+            {
+              "id": "cf6b95b0",
+              "ts": 1775481986039,
+              "time": "6/4/2026, 13.26.26",
+              "type": "invite_link",
+              "userId": "62881036032734@s.whatsapp.net",
+              "detail": "1 invite link",
+              "severity": "medium",
+              "level": 2
+            },
+            {
+              "id": "dcc75e05",
+              "ts": 1775481986077,
+              "time": "6/4/2026, 13.26.26",
+              "type": "escalation_level_1",
+              "userId": "62881036032734@s.whatsapp.net",
+              "detail": "Peringatan: 🔗 Link invite grup lain tidak diizinkan",
+              "severity": "high",
+              "level": 3
+            }
+          ]
+        },
+        "reputation.json": {
+          "120363406234119805@g.us": {
+            "62881036032734@s.whatsapp.net": {
+              "score": 85,
+              "history": [
+                {
+                  "event": "spam",
+                  "delta": -10,
+                  "prev": 100,
+                  "after": 90,
+                  "ts": 1775481986039
+                },
+                {
+                  "event": "warn",
+                  "delta": -5,
+                  "prev": 90,
+                  "after": 85,
+                  "ts": 1775481986077
+                }
+              ],
+              "streaks": {
+                "negative": 2,
+                "positive": 0
+              },
+              "lastEvent": {
+                "event": "warn",
+                "delta": -5,
+                "ts": 1775481986077
+              }
+            },
+            "212782754821@s.whatsapp.net": {
+              "score": 90,
+              "history": [
+                {
+                  "event": "spam",
+                  "delta": -10,
+                  "prev": 100,
+                  "after": 90,
+                  "ts": 1775485620406
+                }
+              ],
+              "streaks": {
+                "negative": 1,
+                "positive": 0
+              },
+              "lastEvent": {
+                "event": "spam",
+                "delta": -10,
+                "ts": 1775485620406
+              }
+            }
+          }
+        }
+      },
+      "size": 2528,
+      "hash": "6f4c025a",
+      "path": "./database/security"
+    },
+    "antiban": {
+      "data": {
+        "circadian.json": {
+          "profile": {
+            "0": 0.10616149874610267,
+            "1": 0.09054208962873486,
+            "2": 0.09841180589960673,
+            "3": 0.0350569600850207,
+            "4": 0.11938231554882628,
+            "5": 0.0680335768024796,
+            "6": 0.2278773774196978,
+            "7": 0.6779809388270103,
+            "8": 0.4558657540088451,
+            "9": 0.5473148718159971,
+            "10": 0.8794160784547733,
+            "11": 0.9118484321016408,
+            "12": 0.6143961973450521,
+            "13": 0.6151274883032826,
+            "14": 0.9489064701593894,
+            "15": 0.9789589404625074,
+            "16": 0.49382753134130086,
+            "17": 0.6061095689053618,
+            "18": 0.6574732568565631,
+            "19": 0.6592762473135327,
+            "20": 0.9096914572643447,
+            "21": 0.8478145125464156,
+            "22": 0.5490620748880481,
+            "23": 0.11567036330867601
+          },
+          "initAt": 1775489599324
+        },
+        "health.json": {
+          "overallStatus": "degraded",
+          "uptime": 21600,
+          "uptimeHuman": "6j 0m 0d",
+          "connectionOk": true,
+          "lastConnected": "6/4/2026, 21.19.10",
+          "disconnects": 3,
+          "recentErrors": 12,
+          "riskScore": 20,
+          "riskLevel": "low",
+          "prediction": {
+            "trend": "increasing",
+            "slope": "0.10",
+            "predicted5min": 21,
+            "confidence": 1
+          },
+          "queue": {
+            "pending": 0,
+            "paused": false,
+            "pauseUntil": null,
+            "perMinute": 0,
+            "perHour": 0,
+            "perDay": 0,
+            "totalSent": 0,
+            "processing": false,
+            "errorCount": 0,
+            "uniqueJidsThisHour": 0,
+            "priorities": {
+              "critical": 0,
+              "high": 0,
+              "normal": 0,
+              "low": 0,
+              "background": 0
+            }
+          },
+          "warmup": {
+            "active": false,
+            "completed": false,
+            "trustScore": 100
+          },
+          "idle": {
+            "active": false,
+            "until": null,
+            "remaining": null,
+            "totalIdles": 5,
+            "history": [
+              {
+                "ts": "6/4/2026, 16.38.03",
+                "duration": "8min"
+              },
+              {
+                "ts": "6/4/2026, 17.48.03",
+                "duration": "2min"
+              },
+              {
+                "ts": "6/4/2026, 18.58.44",
+                "duration": "6min"
+              },
+              {
+                "ts": "6/4/2026, 20.02.16",
+                "duration": "4min"
+              },
+              {
+                "ts": "6/4/2026, 21.23.51",
+                "duration": "6min"
+              }
+            ]
+          },
+          "safeMode": {
+            "active": false
+          },
+          "reconnect": {
+            "attemptsInWindow": 0,
+            "backoffLevel": 0,
+            "totalLifetime": 3,
+            "successStreak": 1,
+            "failStreak": 0,
+            "circuitState": "closed",
+            "lastAttempt": "6/4/2026, 21.19.05",
+            "recentHistory": [
+              {
+                "ts": 1775504256979,
+                "reason": "Connection Terminated",
+                "attempt": 1,
+                "backoffLevel": 0
+              },
+              {
+                "ts": 1775507161600,
+                "reason": "Stream Errored (unknown)",
+                "attempt": 1,
+                "backoffLevel": 0
+              },
+              {
+                "ts": 1775510345675,
+                "reason": "Stream Errored (unknown)",
+                "attempt": 1,
+                "backoffLevel": 0
+              }
+            ],
+            "recentDisconnectReasons": [
+              {
+                "ts": 1775504256979,
+                "reason": "Connection Terminated"
+              },
+              {
+                "ts": 1775507161600,
+                "reason": "Stream Errored (unknown)"
+              },
+              {
+                "ts": 1775510345675,
+                "reason": "Stream Errored (unknown)"
+              }
+            ]
+          },
+          "factors": [
+            {
+              "name": "heartbeat_failure",
+              "weight": 20,
+              "decayedWeight": 19.7,
+              "ageSeconds": 15
+            }
+          ],
+          "interaction": {
+            "health": "healthy",
+            "outboundPerHour": 0,
+            "inboundPerHour": 0,
+            "ratio": "1.00",
+            "totalContacts": 0,
+            "activeContacts": 0,
+            "newContactsNoReply": 0,
+            "issues": []
+          },
+          "connection": {
+            "quality": "fair",
+            "avgLatency5min": "0ms",
+            "reconnects10min": 0,
+            "errors5min": 2,
+            "totalLatencyPts": 0,
+            "qualityHistory": [
+              {
+                "ts": 1775506937955,
+                "quality": "fair"
+              },
+              {
+                "ts": 1775507475954,
+                "quality": "good"
+              },
+              {
+                "ts": 1775511184022,
+                "quality": "fair"
+              }
+            ]
+          },
+          "degradation": {
+            "level": 0,
+            "levelName": "normal",
+            "since": "-",
+            "reason": "",
+            "config": {
+              "name": "normal",
+              "sendMultiplier": 1,
+              "skipMedia": false,
+              "skipGroups": false,
+              "skipBroadcast": false
+            }
+          },
+          "anomaly": {
+            "calibrated": false,
+            "violationCount": 0
+          },
+          "heartbeat": {
+            "status": "running",
+            "lastBeat": "6/4/2026, 19.37.00",
+            "beatCount": 50,
+            "missedBeats": 21,
+            "ageMs": 6978107
+          },
+          "presence": {
+            "currentState": "available",
+            "transitionCount": 15,
+            "recentHistory": [
+              {
+                "ts": "6/4/2026, 17.11.29",
+                "from": "unavailable",
+                "to": "available",
+                "circadian": "0.62"
+              },
+              {
+                "ts": "6/4/2026, 17.13.49",
+                "from": "available",
+                "to": "unavailable",
+                "circadian": "0.60"
+              },
+              {
+                "ts": "6/4/2026, 17.41.23",
+                "from": "unavailable",
+                "to": "available",
+                "circadian": "0.64"
+              },
+              {
+                "ts": "6/4/2026, 17.50.41",
+                "from": "available",
+                "to": "unavailable",
+                "circadian": "0.64"
+              },
+              {
+                "ts": "6/4/2026, 18.02.05",
+                "from": "unavailable",
+                "to": "available",
+                "circadian": "0.64"
+              },
+              {
+                "ts": "6/4/2026, 18.11.56",
+                "from": "available",
+                "to": "unavailable",
+                "circadian": "0.65"
+              },
+              {
+                "ts": "6/4/2026, 19.10.57",
+                "from": "available",
+                "to": "unavailable",
+                "circadian": "0.70"
+              },
+              {
+                "ts": "6/4/2026, 19.16.59",
+                "from": "unavailable",
+                "to": "available",
+                "circadian": "0.73"
+              },
+              {
+                "ts": "6/4/2026, 19.21.45",
+                "from": "available",
+                "to": "unavailable",
+                "circadian": "0.74"
+              },
+              {
+                "ts": "6/4/2026, 19.36.19",
+                "from": "unavailable",
+                "to": "available",
+                "circadian": "0.82"
+              }
+            ]
+          },
+          "poisson": {
+            "rate": 1.8,
+            "fit": "insufficient_data"
+          },
+          "circadian": {
+            "active": true,
+            "multiplier": "67%"
+          },
+          "delayAnalytics": {},
+          "entropy": {
+            "status": "insufficient_data"
+          },
+          "savedAt": "2026-04-06T21:33:18.553Z"
+        },
+        "warmup.json": {
+          "6283815201912:37@s.whatsapp.net": {
+            "startDate": 1775478652082,
+            "completed": false,
+            "daysSent": {},
+            "hoursSent": {},
+            "newJids": {},
+            "knownJids": [],
+            "trustScore": 7.142857142857142,
+            "violations": 0
+          },
+          "6283815201912:38@s.whatsapp.net": {
+            "startDate": 1775478843656,
+            "completed": false,
+            "daysSent": {},
+            "hoursSent": {},
+            "newJids": {},
+            "knownJids": [],
+            "trustScore": 7.142857142857142,
+            "violations": 0
+          }
+        }
+      },
+      "size": 4522,
+      "hash": "a7b792f7",
+      "path": "./database/antiban"
+    }
+  },
+  "totalSize": 17038,
+  "fileCount": 6
+}
