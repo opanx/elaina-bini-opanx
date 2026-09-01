@@ -1,326 +1,84 @@
-# 🌙 Elaina Bot — The Primary
+# 🌙 Elaina Bot — The Primary v4.1.0
 
-<p align="center">
-  <img src="https://img.shields.io/badge/version-4.1.0-purple?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/node-%3E%3D20-green?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/baileys-latest-orange?style=for-the-badge" />
-</p>
+> **Your AI-Powered WhatsApp Butler** | Rebuilt by Opanx 🐙
 
-> **"Your AI-Powered WhatsApp Butler"**
-
-A feature-rich WhatsApp bot built with Node.js and Baileys, featuring AI chat, media downloaders, group management, and more.
-
----
-
-## ⚠️ Credits (DO NOT REMOVE)
-
-| Role | Name |
-|------|------|
-| **Developer** | FallZx Infinity |
-| **Base ORI** | KyyInfinite |
-| **Rebuilt by** | Opanx 🐙 |
-
-> This software is provided as-is. The original developer and base creator must be credited at all times.
-> 
-> **Anti-Ban**: Elaina uses `baileys-antiban` for human-like behavior patterns to reduce ban risk. Never spam or send bulk messages.
-
----
-
-## ✨ Features
-
-### 📥 Downloader
-- TikTok (Video & Audio)
-- Instagram (Post, Story, Reels)
-- YouTube (Video & Audio)
-- Facebook
-- Twitter/X
-- Spotify
-- MediaFire
-- Terabox
-
-### 🤖 AI Chat
-- ChatGPT (GPT-4o, GPT-4, GPT-3.5)
-- Google Gemini
-- DeepSeek R1
-- Meta LLaMA
-- Groq (Free tier)
-- Multi-language translation
-
-### 🎨 AI Image
-- Image generation
-- Anime style
-- Ghibli style
-- Background removal
-- Image enhancement
-
-### 🪄 Sticker & Media
-- Image to sticker
-- Text to sticker
-- Animated text sticker
-- Emoji mix
-- Media conversion
-
-### 🎮 Games
-- Word guessing
-- Rock Paper Scissors
-- Slot machine
-- Daily rewards
-- Level system
-
-### 👥 Group Management
-- Kick/Promote/Demote
-- Anti-link
-- Anti-spam
-- Welcome/Leave messages
-- Warning system
-
-### 🛡️ Protection
-- Anti-toxic
-- Anti-NSFW
-- Anti-vortex (forward)
-- Slowmode
-- Verify system
-
-### 🔐 Security
-- PM Guard (anti-PM spam)
-- Rate limiting
-- Ban system
-- Auto-Doctor (self-healing)
-
-### 🛡️ Anti-Ban System
-- **Gaussian jitter rate limiting** — Human-like message timing
-- **7-day warm-up** — Gradual ramp for new numbers
-- **Typing simulation** — Realistic typing indicators
-- **Presence cycling** — Available/unavailable toggling
-- **Content variation** — Invisible character injection
-- **Delivery tracking** — Monitor message delivery rates
-- **Health monitoring** — Auto-pause on ban risk
-- **Human entropy service** — Background idle activity
-
-### 🔧 Tools
-- OCR (image to text)
-- Calculator
-- QR Code generator
-- URL shortener
-- Weather info
-
----
-
-## 🚀 Quick Start
-
-### Prerequisites
-- Node.js 20+ 
-- npm or yarn
-- WhatsApp account
-
-### Installation
+## ⚡ Quick Install
 
 ```bash
-# Clone the repository
+# 1. Clone
 git clone https://github.com/opanx/elaina-bini-opanx.git
 cd elaina-bini-opanx
 
-# Install dependencies
+# 2. Install
 npm install
 
-# Setup environment
+# 3. Setup
 cp .env.example .env
-# Edit .env with your settings
+nano .env
 
-# Start the bot
-node src/index.js
+# 4. Run
+npm start
 ```
 
-### Pairing Code Mode (No QR Needed)
+**Done!** Bot langsung jalan! 🎉
+
+## 📲 Pairing Code (No QR)
 
 ```bash
-# Use pairing code instead of QR
-node src/index.js --pairing --phone 628xxxxxxxxxx
-
-# Or with short flags
-node src/index.js -p -n 628xxxxxxxxxx
+node index.js --pairing
 ```
 
-### Production (PM2)
-
-```bash
-# Install PM2 globally
-npm install -g pm2
-
-# Start with PM2
-pm2 start ecosystem.config.js
-
-# Save PM2 config
-pm2 save
-pm2 startup
-```
-
----
-
-## 🖥️ Deployment
-
-### Pterodactyl Panel
-
-1. Import egg `Node.js Generic` ke Pterodactyl
-2. Create server baru
-3. Upload source code via File Manager
-4. Set startup command: `npm install && node src/index.js`
-5. Start server
-6. Console → QR Code / Pairing Code
-7. Scan dari WhatsApp
-8. Bot online 24/7! ✅
-
-### VPS (Ubuntu)
-
-```bash
-# Update system
-sudo apt update && sudo apt upgrade -y
-
-# Install Node.js
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-sudo apt install -y nodejs
-
-# Install PM2
-sudo npm install -g pm2
-
-# Clone and setup
-git clone https://github.com/opanx/elaina-bini-opanx.git
-cd elaina-bini-opanx
-npm install
-cp .env.example .env
-nano .env  # Edit settings
-
-# Start with PM2
-pm2 start ecosystem.config.js
-pm2 save
-pm2 startup
-```
-
-### Railway
-
-1. Connect GitHub repo
-2. Railway auto-detects Node.js
-3. Set environment variables
-4. Deploy!
-
----
-
-## ⚙️ Configuration
-
-Edit `.env` file:
+## ⚙️ Config (.env)
 
 ```env
-# Bot Settings
 BOT_NAME=Elaina The Primary
-OWNER_NUMBER=628xxxxxxxxxx
-BOT_NUMBER=628xxxxxxxxxx
-OWNER_NAME=Your Name
+OWNER_NUMBER=6285706665203
+OWNER_NAME=Panxcz
 PREFIX=.
-
-# AI API Keys (get from respective providers)
+PAIRING_CODE=PANXCELM
 OPENAI_API_KEY=sk-xxxxx
-GEMINI_API_KEY=xxxxx
 GROQ_API_KEY=gsk_xxxxx
-DEEPSEEK_API_KEY=sk-xxxxx
 ```
 
----
+## 📊 Features
 
-## 📁 Project Structure
+| Feature | Count |
+|---------|-------|
+| Commands | 300+ |
+| Scrapers | 34 |
+| Games | 25+ |
+| AI Models | 20+ |
+| Categories | 25 |
+
+## 📁 Structure
 
 ```
-elaina-bini-opanx/
-├── src/
-│   ├── core/
-│   │   ├── connection.js      # WhatsApp connection
-│   │   ├── eventHandler.js    # Event handlers
-│   │   └── commandLoader.js   # Command loader
-│   ├── config/
-│   │   ├── settings.js        # Bot settings
-│   │   └── constants.js       # Constants
-│   ├── database/
-│   │   └── engine.js          # SQLite + JSON DB
-│   ├── security/
-│   │   └── rateLimit.js       # Rate limiter
-│   ├── commands/
-│   │   └── main.js            # Main commands
-│   ├── lib/
-│   │   ├── functions.js       # Utility functions
-│   │   └── welcomeCard.js     # Welcome card
-│   └── index.js               # Entry point
-├── assets/
-├── .env.example
-├── .gitignore
-├── ecosystem.config.js
-├── package.json
-├── LICENSE
-└── README.md
+├── Elaina.js          ← Main handler (32K lines)
+├── index.js           ← Entry point
+├── settings.js        ← Config + globals
+├── lib/               ← Libraries
+│   ├── allmenu.js     ← Menu system
+│   ├── games.js       ← 15+ games
+│   ├── scrape/        ← 34 scrapers
+│   ├── system/        ← 15 system files
+│   ├── canvas/        ← 18 canvas effects
+│   └── ...            ← More libs
+├── database/          ← 61 JSON files
+├── assets/            ← Images + fonts
+└── src/               ← Our additions
 ```
-
----
-
-## 🛠️ Commands
-
-| Command | Description |
-|---------|-------------|
-| `.menu` | Show all commands |
-| `.ping` | Check bot latency |
-| `.status` | Bot status |
-| `.owner` | Contact owner |
-| `.tiktok <url>` | Download TikTok |
-| `.ig <url>` | Download Instagram |
-| `.ytmp3 <url>` | Download YouTube audio |
-| `.ytmp4 <url>` | Download YouTube video |
-| `.gpt <text>` | Chat with GPT |
-| `.gemini <text>` | Chat with Gemini |
-| `.img <prompt>` | Generate image |
-| `.s` | Image to sticker |
-| `.toimg` | Sticker to image |
-| `.ocr` | Image to text |
-| `.calc <expr>` | Calculator |
-| `.doctor` | Health check |
-
----
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
 
 ## 🙏 Credits
 
-- **FallZx Infinity** — Original Developer
+- **FallZx Infinity** — Developer
 - **KyyInfinite** — Base ORI
-- **Opanx** — Rebuild & Optimization
+- **Opanx** — Rebuild 🐙
 - **Panxcz** — Owner 👑
-- **@whiskeysockets/baileys** — WhatsApp Web API
-- **baileys-antiban** — Anti-ban middleware
-- **Contributors** — Thank you!
-
----
 
 ## ⚠️ Disclaimer
 
-This bot is provided for educational purposes only. Use at your own risk. The developers are not responsible for any misuse or damage caused by this bot.
-
-**Anti-Ban Notice**: While Elaina includes anti-ban protections, there is no 100% guarantee against WhatsApp bans. Use responsibly and avoid spamming.
+Educational purposes only. Use at your own risk.
 
 ---
 
-<p align="center">
-  Made with ❤️ by <b>Opanx</b> 🐙
-  <br>
-  Base by <b>FallZx Infinity</b> × <b>KyyInfinite</b>
-</p>
+**Version:** 4.1.0 | **License:** MIT | **Node:** ≥20

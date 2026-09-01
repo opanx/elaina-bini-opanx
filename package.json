@@ -2,11 +2,11 @@
     "name": "elaina-bini-opanx",
     "version": "4.1.0",
     "description": "Elaina The Primary — AI-Powered WhatsApp Bot (Rebuilt by Opanx)",
-    "main": "src/index.js",
+    "main": "index.js",
     "type": "commonjs",
     "scripts": {
-        "start": "node src/index.js",
-        "dev": "node src/index.js",
+        "start": "node index.js",
+        "dev": "node index.js",
         "pm2": "pm2 start ecosystem.config.js"
     },
     "keywords": [
