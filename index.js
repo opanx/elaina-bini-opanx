@@ -172,6 +172,22 @@ async function Starts() {
         global._AB_SOCK = Elaina;
     }
 
+    // ══ AUTO STALE-SESSION WATCHDOG ══════════════════════════════
+    // Kalau ada session lama (creds.registered = true) tapi 60 detik
+    // ga bisa connect → session basi. Hapus otomatis & restart biar
+    // pairing code muncul. Ga perlu flag apa pun — tinggal npm start.
+    global._CONN_OPENED = false;
+    if (global._STALE_WD) { clearTimeout(global._STALE_WD); global._STALE_WD = null; }
+    if (Elaina.authState.creds.registered) {
+        global._STALE_WD = setTimeout(() => {
+            if (global._CONN_OPENED) return;
+            console.log(chalk.yellow('\n[Watchdog] ⏱️ Session basi — 60 detik ga konek, reset session untuk pairing...'));
+            wipeSession();
+            global._STARTS_CALLED = false;
+            setTimeout(() => { try { Starts(); } catch {} }, 1500);
+        }, 60000);
+    }
+
     if (usePairingCode && !Elaina.authState.creds.registered) {
 
         try {
@@ -1172,6 +1188,8 @@ Elaina.ev.on('group-participants.update', async (_gpUpdate) => {
         } catch (_adConnErr) { /* silent */ }
 
         if (connection === 'open') {
+            global._CONN_OPENED = true;
+            if (global._STALE_WD) { clearTimeout(global._STALE_WD); global._STALE_WD = null; }
             loadModule(Elaina);
             if (_AB) {
                 const _botJid = Elaina.user?.id || '__bot__';
