@@ -1,4 +1,4 @@
-# 🌙 Elaina Bot — The Primary v4.1.0
+# 🌙 Elaina Bot — The Primary v4.1.6
 
 > **Your AI-Powered WhatsApp Butler** | Rebuilt by Opanx 🐙
 
@@ -21,6 +21,10 @@ npm start
 
 **Done!** Ga perlu `cp .env`, langsung edit `settings.js`!
 
+> ⚠️ **Kalau pairing code / QR ga muncul**: itu karena ada `session/` lama yang basi di panel.
+> Hapus folder `session/` di file manager, atau pakai `node index.js --pairing` (otomatis reset session).
+> `index.js` sekarang SUDAH DI-DEOBFUSCATE (entry point readable, ga ada lagi kode aneh).
+
 ## 📝 Edit settings.js
 
 Buka `settings.js` di file manager, edit bagian ini:
@@ -33,11 +37,27 @@ global.keyopenai = "sk-xxx"           // OpenAI key (opsional)
 global.groqKey = "gsk_xxx"            // Groq key (FREE!)
 ```
 
-## 📲 Pairing Code
+## 📲 Pairing Code & QR
 
 ```bash
+# Pairing otomatis (kalau session kosong)
+npm start
+
+# FORCE pairing — reset session lama & minta kode baru
 node index.js --pairing
+
+# Pakai QR code (bukan pairing)
+node index.js --qr
+
+# Custom pairing code (min 8 karakter)
+PAIRING_CODE=PANXCELM node index.js
 ```
+
+Kode pairing muncul di **console panel** dalam kotak `🔑 PAIRING CODE`.
+Masukin nomor HP (format 62xxx) → bot kasih kode → masukin di WhatsApp:
+**Setelan → Perangkat Tertaut → Tautkan Perangkat**.
+
+Kalau bot di-logout dari HP, session otomatis dihapus & siap pairing ulang.
 
 ## 📊 Features
 
@@ -80,4 +100,4 @@ Educational purposes only. Use at your own risk.
 
 ---
 
-**Version:** 4.1.0 | **License:** MIT | **Node:** ≥20
+**Version:** 4.1.6 | **License:** MIT | **Node:** ≥20
